@@ -30,4 +30,42 @@ class UI {
       <div id="repos"></div>
     `;
   }
+
+  // Show alert message
+  showAlert(message, className){
+    // Clear any remaining alerts
+    this.clearAlert();
+    // Create div
+    const div = document.createElement('div');
+    // Add classes
+    div.className = className;
+    // Add text
+    div.appendChild(document.createTextNode(message));
+    // Get parent (to insert the div we are gonna need a parent)
+    const container = document.querySelector('.searchContainer');
+    // Get the search box
+    const search = document.querySelector('.search');
+    // Insert alert
+    container.insertBefore(div, search);
+
+    // Timeout after 3 sec
+    setTimeout(() => {
+      this.clearAlert();
+    },3000);
+
+  }
+
+  // clear alert message
+  clearAlert(){
+    const currentAlert = document.querySelector('.alert');
+
+    if(currentAlert){
+      currentAlert.remove();
+    }
+  }
+
+  // Clear Profile
+  clearProfile(){
+    this.profile.innerHTML = '';
+  }
 }
